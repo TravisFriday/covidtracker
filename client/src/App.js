@@ -3,6 +3,8 @@ import React, { Component } from "react";
 import { Cards, Chart, CountryPicker } from "./components";
 import styles from "./App.module.css";
 import { fetchData } from "./api";
+import coronaImg from "./images/image.png";
+import CollapsableGraph from "./components/CollapsableGraph/CollapsableGraph";
 
 class App extends Component {
   //contructor is created in the backend
@@ -20,19 +22,21 @@ class App extends Component {
     //fetch the data
     const fetchedData = await fetchData(country);
     //set the state
-    console.log(fetchedData);
+    this.setState({ data: fetchedData, country: country });
   };
 
   render() {
-    const { data } = this.state;
+    const { data, country } = this.state;
 
     return (
       <div className={styles.container}>
+        <img className={styles.image} src={coronaImg} alt="COVID-19" />
         <Cards data={data}></Cards>
         <CountryPicker
           handleCountryChange={this.handleCountryChange}
         ></CountryPicker>
-        <Chart></Chart>
+        <Chart data={data} country={country}></Chart>
+        {/*<CollapsableGraph /> */}
       </div>
     );
   }
