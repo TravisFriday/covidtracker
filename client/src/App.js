@@ -4,7 +4,6 @@ import { Cards, Chart, CountryPicker } from "./components";
 import styles from "./App.module.css";
 import { fetchData } from "./api";
 import coronaImg from "./images/image.png";
-import CollapsableGraph from "./components/CollapsableGraph/CollapsableGraph";
 
 class App extends Component {
   //contructor is created in the backend
@@ -36,7 +35,6 @@ class App extends Component {
           handleCountryChange={this.handleCountryChange}
         ></CountryPicker>
         <Chart data={data} country={country}></Chart>
-        {/*<CollapsableGraph /> */}
       </div>
     );
   }

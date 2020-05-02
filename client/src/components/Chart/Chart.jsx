@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { fetchDailyData } from "../../api";
 import { Line, Bar } from "react-chartjs-2";
-
+import { Typography } from "@material-ui/core";
 import styles from "./Chart.module.css";
 
 function Chart({ data: { confirmed, deaths, recovered }, country }) {
@@ -63,7 +63,12 @@ function Chart({ data: { confirmed, deaths, recovered }, country }) {
   ) : null;
 
   return (
-    <div className={styles.container}>{country ? barChart : lineChart}</div>
+    <div className={styles.container}>
+      <Typography color="textSecondary" gutterBottom>
+        Infected
+      </Typography>
+      {country ? barChart : lineChart}
+    </div>
   );
 }
 
